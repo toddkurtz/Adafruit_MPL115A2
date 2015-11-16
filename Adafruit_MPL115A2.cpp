@@ -20,34 +20,16 @@
          - get both P and T with a single call to getPT
 */
 /**************************************************************************/
-#if ARDUINO >= 100
- #include "Arduino.h"
-#else
- #include "WProgram.h"
-#endif
-
-#include <Wire.h>
 
 #include "Adafruit_MPL115A2.h"
 
-static uint8_t i2cread(void) {
-  uint8_t x;
-  #if ARDUINO >= 100
-  x = Wire.read();
-  #else
-  x = Wire.receive();
-  #endif
-  //Serial.print("0x"); Serial.println(x, HEX);
-  return x;
-}
+/**************************************************************************/
+/*!
+    @brief  Instantiates a new MPL3115A2 class
+*/
+/**************************************************************************/
+Adafruit_MPL115A2::Adafruit_MPL115A2() {
 
-
-static void i2cwrite(uint8_t x) {
-  #if ARDUINO >= 100
-  Wire.write((uint8_t)x);
-  #else
-  Wire.send(x);
-  #endif
 }
 
 /**************************************************************************/
