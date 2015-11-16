@@ -17,13 +17,7 @@
 */
 /**************************************************************************/
 
-#if ARDUINO >= 100
- #include "Arduino.h"
-#else
- #include "WProgram.h"
-#endif
-
-#include <Wire.h>
+#include "application.h"
 
 /*=========================================================================
     I2C ADDRESS/BITS
@@ -52,10 +46,12 @@
 class Adafruit_MPL115A2{
  public:
   Adafruit_MPL115A2();
-  void begin(void);
+  boolean begin(void);
   float getPressure(void);
   float getTemperature(void);
-  void getPT(float *P, float *T);
+  float getPT(float *P, float *T);
+
+  void write8(uint8_t a, uint8_t d);
 
  private:
   float _mpl115a2_a0;
@@ -64,4 +60,8 @@ class Adafruit_MPL115A2{
   float _mpl115a2_c12;
 
   void readCoefficients(void);
+  
+  uint8_t read8(uint8_t a);
+  uint8_t mode;
+  
 };
