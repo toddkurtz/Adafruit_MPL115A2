@@ -3,16 +3,12 @@
     @file     Adafruit_MPL115A2.h
     @author   K. Townsend (Adafruit Industries)
     @license  BSD (see license.txt)
-
     This is a library for the Adafruit MPL115A2 breakout board
     ----> https://www.adafruit.com/products/???
-
     Adafruit invests time and resources providing this open source code,
     please support Adafruit and open-source hardware by purchasing
     products from Adafruit!
-
     @section  HISTORY
-
     v1.0  - First release
 */
 /**************************************************************************/
@@ -46,10 +42,10 @@
 class Adafruit_MPL115A2{
  public:
   Adafruit_MPL115A2();
-  boolean begin(void);
+  void begin(void);
   float getPressure(void);
   float getTemperature(void);
-  float getPT(float *P, float *T);
+  void getPT(float *P, float *T);
 
   void write8(uint8_t a, uint8_t d);
 
