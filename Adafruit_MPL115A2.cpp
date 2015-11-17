@@ -3,18 +3,13 @@
     @file     Adafruit_MPL115A2.cpp
     @author   K.Townsend (Adafruit Industries)
     @license  BSD (see license.txt)
-
     Driver for the MPL115A2 barometric pressure sensor
-
     This is a library for the Adafruit MPL115A2 breakout
     ----> https://www.adafruit.com/products/992
-
     Adafruit invests time and resources providing this open source code,
     please support Adafruit and open-source hardware by purchasing
     products from Adafruit!
-
     @section  HISTORY
-
     v1.0 - First release
     v1.1 - Rick Sellens added casts to make bit shifts work below 22.6C
          - get both P and T with a single call to getPT
@@ -25,11 +20,20 @@
 
 /**************************************************************************/
 /*!
-    @brief  Instantiates a new MPL3115A2 class
+    @brief  Instantiates a new MPL115A2 class
 */
 /**************************************************************************/
-Adafruit_MPL115A2::Adafruit_MPL115A2() {
 
+static uint8_t i2cread(void) {
+  uint8_t x;
+  x = Wire.read();
+  //Serial.print("0x"); Serial.println(x, HEX);
+  return x;
+}
+
+
+static void i2cwrite(uint8_t x) {
+  Wire.write((uint8_t)x);
 }
 
 /**************************************************************************/
@@ -156,6 +160,3 @@ void Adafruit_MPL115A2::getPT(float *P, float *T) {
   *T = ((float) temp - 498.0F) / -5.35F +25.0F;           // C
   
 }
-
-
-
